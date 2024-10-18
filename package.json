@@ -1,22 +1,33 @@
 {
   "name": "nuxt-app",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "run-p dev:*",
+    "dev:express": "node server/server.cjs",
+    "dev:nuxt": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.13.0",
-    "vue": "latest",
-    "vue-router": "latest"
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.2",
+    "npm-run-all": "^4.1.5",
+    "nuxt": "^3.10.3",
+    "vue": "^3.4.19",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14"
+    "@types/bcrypt": "^5.0.2",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "sass": "^1.71.1",
+    "tailwindcss": "^3.4.1"
   }
 }

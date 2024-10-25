@@ -17,6 +17,49 @@ mongoose.connect(uri)
   })
   .catch(err => console.log(err));
 
+// User model
+const userSchema = new mongoose.Schema({
+  phone: String,
+  password: String,
+  firstName: String,
+  lastName: String,
+  login: String,
+});
+const User = mongoose.model('User', userSchema);
+
+app.post('/register', async (req, res) => {
+  const { phone, password, firstName, lastName, login } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new User({ phone, password: hashedPassword, firstName, lastName, login });
+  user.save()
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on http://localhost:${port}`);
 });
+
+app.post('/login', async (req, res) => {
+  const { phone, password } = req.body;
+  const user = await User.findOne({ phone });
+
+  if (!user) {
+    return res.status(400).json({ message: 'User not found' });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (!isMatch) {
+    return res.status(400).json({ message: 'Invalid credentials' });
+  }
+
+  const token = jwt.sign({ id: user._id, phone: user.phone }, 'your_jwt_secret', { expiresIn: '1d' });
+
+  res.json({ token }); // Отправляем токен в ответе
+});
+
+
+
+
+

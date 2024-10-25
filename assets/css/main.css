@@ -19,3 +19,11 @@ body {
 .logo {
   font-family: 'Birthstone', cursive;
 }
+
+html {
+  font-size: 16px; /* Устанавливаем базовый размер шрифта */
+}
+
+body {
+  @apply font-sans; /* Применяем стандартный шрифт из Tailwind */
+}

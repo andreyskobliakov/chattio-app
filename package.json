@@ -12,12 +12,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.5.7",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
     "npm-run-all": "^4.1.5",
@@ -26,6 +28,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@iconify-json/ic": "^1.2.1",
     "@types/bcrypt": "^5.0.2",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",

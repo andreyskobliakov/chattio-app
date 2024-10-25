@@ -10,5 +10,6 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: '2024-10-17',
+  modules: ['@nuxt/icon'],
+  compatibilityDate: '2024-10-26',
 })
